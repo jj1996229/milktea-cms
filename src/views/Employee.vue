@@ -4,7 +4,7 @@
       <el-aside width="200px">
         <img src="https://img0.baidu.com/it/u=1622302095,871955617&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500" alt=""
           class="logo">
-        <el-menu active-text-color="#ffd04b" background-color="#FFF0F5" class="el-menu-vertical-demo" default-active="2"
+        <el-menu active-text-color="#ffd04b" background-color="#FFF0F5" :default-active="active"
           text-color="#000000" @open="handleOpen" @close="handleClose" router>
           <el-menu-item index="/employee">
             <el-icon>
@@ -62,8 +62,12 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref } from 'vue';
+import { useRoute } from 'vue-router';
 
+const route = useRoute()
+const active = ref( route.path )
 </script>
 
 <style lang="scss" scoped>
@@ -89,7 +93,7 @@
 
 .logo {
   height: 200px;
-
+  vertical-align: middle;
 }
 
 .el-menu {
