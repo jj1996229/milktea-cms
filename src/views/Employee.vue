@@ -4,8 +4,8 @@
       <el-aside width="200px">
         <img src="https://img0.baidu.com/it/u=1622302095,871955617&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500" alt=""
           class="logo">
-        <el-menu active-text-color="#ffd04b" background-color="#FFF0F5" :default-active="active"
-          text-color="#000000" @open="handleOpen" @close="handleClose" router>
+        <el-menu active-text-color="#ffd04b" background-color="#FFF0F5" :default-active="active" text-color="#000000"
+          @open="handleOpen" @close="handleClose" router>
           <el-menu-item index="/employee">
             <el-icon>
               <User />
@@ -49,11 +49,23 @@
           <h3>员工管理</h3>
           <div class="user">
             <span>管理员</span>
-            <el-icon class="quit">
+            <el-icon class="quit" @click="handleLogout">
               <SwitchButton />
             </el-icon>
           </div>
         </el-header>
+        <el-descriptions title="员工表" :column="3" border>
+            <el-descriptions-item label="姓名" label-align="right" align="center" label-class-name="my-label"
+              class-name="my-content" width="150px">kooriookami</el-descriptions-item>
+            <el-descriptions-item label="电话" label-align="right" align="center">18100000000</el-descriptions-item>
+            <el-descriptions-item label="邮箱" label-align="right" align="center">13123131@163.com</el-descriptions-item>
+            <el-descriptions-item label="Remarks" label-align="right" align="center">
+              <el-tag size="small">School</el-tag>
+            </el-descriptions-item>
+            <el-descriptions-item label="地址" label-align="right" align="center">No.1188, Wuzhong Avenue, Wuzhong
+              District, Suzhou, Jiangsu
+              Province</el-descriptions-item>
+          </el-descriptions>
         <el-main>
           <Router-View />
         </el-main>
@@ -67,7 +79,10 @@ import { ref } from 'vue';
 import { useRoute } from 'vue-router';
 
 const route = useRoute()
-const active = ref( route.path )
+const active = ref(route.path)
+const handleLogout = () => {
+  location.href = '/login'
+}
 </script>
 
 <style lang="scss" scoped>
@@ -103,4 +118,11 @@ const active = ref( route.path )
 .is-active {
   color: black !important;
   background-color: #FFD700;
-}</style>
+}
+.my-label {
+  background: var(--el-color-success-light-9);
+}
+.my-content {
+  background: var(--el-color-danger-light-9);
+}
+</style>
