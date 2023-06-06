@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
+import Index from '@/views/Index.vue'
 import Category from '@/views/Category.vue'
 import Combo from '@/views/Combo.vue'
 import Drink from '@/views/Drink.vue'
@@ -17,10 +18,15 @@ const router = createRouter({
       redirect: '/login'
     },
     {
-      path: '/employee',
-      name: 'employee',
-      component: Employee,
+      path: '/index',
+      name: 'index',
+      component: Index,
       children: [
+        {
+          path: 'employee',
+          name: 'employee',
+          component: Employee
+        },
         {
           path: 'category',
           name: 'category',
